@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
 
-const AuthContext = React.createContext()
+export const AuthContext = React.createContext()
 export const AuthConsumer = AuthContext.Consumer
 
-const {user, setUser} = useState(null)
 
 export const AuthProvider = () =>{
+  const {user, setUser} = useState(null)
 const handleLogin = (user, history)=>{
   axios.post("/api/auth/sign_in", user)
   .then(res=>{
@@ -49,7 +49,7 @@ return(
     handleLogout: handleLogout(),
     setUser: (user) => setUser({user})
   }}>
-    {props.children}
+    {this.props.children}
   </AuthContext.Provider>
 )
 
