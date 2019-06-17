@@ -6,7 +6,7 @@ import {Link, withRouter } from 'react-router-dom'
 const Navbar = (props) =>{
   
 
-  const rightNavItems = ({user, handleLogout}) =>{
+  const rightNavItems = (user, handleLogout) =>{
     if(user){
       return(
         <Menu.Menu position = 'right'>

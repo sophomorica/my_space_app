@@ -10,10 +10,11 @@ import { initMiddleware, } from 'devise-axios'
   
 ReactDOM.render(
 
-<BrowserRouter>
-  <App />
-</BrowserRouter>
-, 
+  <AuthProvider>
+      <BrowserRouter>
+        <App /> 
+      </BrowserRouter>
+    </AuthProvider>,
 document.getElementById('root'));
 
 
