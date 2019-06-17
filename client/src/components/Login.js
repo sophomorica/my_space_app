@@ -1,13 +1,18 @@
 import React, {useState, useContext} from 'react';
-import { AuthConsumer, } from "../providers/AuthProvider";
+import { AuthConsumer, AuthContext } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header, } from 'semantic-ui-react';
 
 const Login = (props) =>{
-  const {email, setEmail} = useState("")
-  const {password, setPassword} = useState("")
-  const {auth, authenticated, handleLogin, handleRegister, handleLogout, setUser} = useContext(AccountContext)
+  const emptyForm ={
+    email: "",
+    password: "", 
+  }
+  const [email, setEmail] = useState("")
+  const [form, setForm] = useState(emptyForm)
+  const [password, setPassword] = useState("")
+  const {auth, authenticated, handleLogin, handleRegister, handleLogout, setUser} = useContext(AuthContext)
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     // const { email, password } = this.state 
     // const { auth } = this.props 
@@ -15,32 +20,35 @@ const Login = (props) =>{
     auth.handleLogin({email, password }, props.history)
   }
 
-  handleChange = (e) => {
-    const { name, value, } = e.target;
-    setEmail({ [name]: value, });
-    setPassword({ [name]: value, });
+  const handleChange = (name) => (e) => {
+    // const { value, } = e.target;
+    setForm({...form, [name]: e.target.value})
+    console.log(form.email)
+    
   }
+  // const handleChange = (e, {name, value}) =>this.setState({[name]:value})
+
   return(
     <Segment basic>
       <Header as='h1' textAlign='center'>Login</Header>
-      <Form onSubmit={()=>handleSubmit()}>
+      <Form onSubmit={handleSubmit}>
         <Form.Input
           label="Email"
           autoFocus
-          required         
           name='email'
-          value={email}
+          required         
+          value={form.email}
           placeholder='Email'
-          onChange={()=>handleChange()}
+          onChange={handleChange('email')}
         />
         <Form.Input
           label="Password"
           required
           name='password'
-          value={password}
+          value={form.password}
           placeholder='Password'
           type='password'
-          onChange={()=>handleChange()}
+          onChange={handleChange('password')}
         />
         <Segment textAlign='center' basic>
           <Button primary type='submit'>Submit</Button>
