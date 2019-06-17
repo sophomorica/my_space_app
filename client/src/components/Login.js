@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { AuthConsumer, AuthContext } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header, } from 'semantic-ui-react';
+import axios from 'axios'
 
 const Login = (props) =>{
   const emptyForm ={
@@ -10,14 +11,26 @@ const Login = (props) =>{
   // const [email, setEmail] = useState("")
   // const [password, setPassword] = useState("")
   const [form, setForm] = useState(emptyForm)
-  const {auth, authenticated, handleLogin, handleRegister, handleLogout, setUser} = useContext(AuthContext)
-
+  const {auth, authenticated, user, handleRegister, handleLogout, setUser} = useContext(AuthContext)
+  const handleLogin = (user, history)=>{
+    axios.post("/api/auth/sign_in", user)
+    .then(res=>{
+      setUser(res.data.data)
+      history.push('/')
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+  }
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     // const { email, password } = this.state 
     // const { auth } = this.props 
     //this.props.auth.handleLogin
-    auth.handleLogin({email, password }, props.history)
+    // const { auth } = this.props 
+
+    handleLogin({...form}, props.history)
   }
 
   const handleChange = (name) => (e) => {
