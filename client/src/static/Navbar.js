@@ -36,7 +36,7 @@ const Navbar = (props) =>{
     }
   }
   
-  const {auth, authenticated, handleLogin, handleRegister, handleLogout, setUser} = useContext(AuthContext)
+  const {auth,} = useContext(AuthContext)
   return(
       <Menu pointing secondary>
         <Link to ='/'>
