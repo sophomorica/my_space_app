@@ -11,32 +11,26 @@ const Login = (props) =>{
   // const [email, setEmail] = useState("")
   // const [password, setPassword] = useState("")
   const [form, setForm] = useState(emptyForm)
-  const {auth, authenticated, user, handleRegister, handleLogout, setUser} = useContext(AuthContext)
-  const handleLogin = (user, history)=>{
-    axios.post("/api/auth/sign_in", user)
-    .then(res=>{
-      setUser(res.data.data)
-      history.push('/')
-    })
-    .catch(err =>{
-      console.log(err)
-    })
-  }
+  const {handleLogin, authenticated, user, handleRegister, handleLogout, setUser} = useContext(AuthContext)
+  // const handleLogin = (user, history)=>{
+  //   axios.post("/api/auth/sign_in", user)
+  //   .then(res=>{
+  //     setUser(res.data.data)
+  //     history.push('/')
+  //   })
+  //   .catch(err =>{
+  //     console.log(err)
+  //   })
+  // }
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    // const { email, password } = this.state 
-    // const { auth } = this.props 
-    //this.props.auth.handleLogin
-    // const { auth } = this.props 
-
     handleLogin({...form}, props.history)
   }
 
   const handleChange = (name) => (e) => {
     // const { value, } = e.target;
     setForm({...form, [name]: e.target.value})
-    console.log(form.email)
     
   }
   // const handleChange = (e, {name, value}) =>this.setState({[name]:value})

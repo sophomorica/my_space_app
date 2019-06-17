@@ -9,16 +9,16 @@ export const AuthConsumer = AuthContext.Consumer
 export const AuthProvider = (props) =>{
   const {user, setUser} = useState(null)
 
-  // const handleLogin = (user, history)=>{
-  //   axios.post("/api/auth/sign_in", user)
-  //   .then(res=>{
-  //     setUser(res.data.data)
-  //     history.push('/')
-  //   })
-  //   .catch(err =>{
-  //     console.log(err)
-  //   })
-  // }
+  const handleLogin = (user, history)=>{
+    axios.post("/api/auth/sign_in", user)
+    .then(res=>{
+      setUser(res.data.data)
+      history.push('/')
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+  }
   const handleRegister = (user, history) =>{
     axios.post("/api/auth",user)
     .then(res=>{
@@ -45,9 +45,9 @@ export const AuthProvider = (props) =>{
     <AuthContext.Provider value = {{
       user, 
       authenticated: user !==null,
-      // handleLogin: handleLogin(),
-      handleRegister: handleRegister(),
-      handleLogout: handleLogout(),
+      handleLogin: handleLogin,
+      handleRegister: handleRegister,
+      handleLogout: handleLogout,
       setUser: (user) => setUser({user})
     }}>
       {props.children}
