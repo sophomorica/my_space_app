@@ -7,9 +7,9 @@ const Login = (props) =>{
     email: "",
     password: "", 
   }
-  const [email, setEmail] = useState("")
+  // const [email, setEmail] = useState("")
+  // const [password, setPassword] = useState("")
   const [form, setForm] = useState(emptyForm)
-  const [password, setPassword] = useState("")
   const {auth, authenticated, handleLogin, handleRegister, handleLogout, setUser} = useContext(AuthContext)
 
   const handleSubmit = (e) => {
