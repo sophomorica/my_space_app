@@ -7,11 +7,14 @@ import About from './static/About'
 import NoMatch from './static/NoMatch'
 import Login from './components/Login'
 import Register from './components/Register'
+import FetchUser from './components/FetchUser'
 
 function App() {
   return (
     <>
     <Navbar/>
+    <FetchUser>
+
     <Container>
       <Switch>
         <Route exact path = '/' component = {Home}/>
@@ -21,6 +24,7 @@ function App() {
         <Route component = {NoMatch}/>
       </Switch>
     </Container>
+    </FetchUser>
     </>
     
   );

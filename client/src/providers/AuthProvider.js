@@ -38,7 +38,7 @@ export const AuthProvider = (props) =>{
     .then(res=>{
       debugger
       setUser(null)
-      history.push('/login')
+      history.push('./login')
     })
     .catch(err =>{
       console.log(err)
