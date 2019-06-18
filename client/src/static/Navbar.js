@@ -1,12 +1,14 @@
 import React, {useContext} from 'react'
 import {Menu, } from 'semantic-ui-react'
-import { AuthContext} from "../providers/AuthProvider"
+import { AuthContext, AuthConsumer} from "../providers/AuthProvider"
 import {Link, withRouter } from 'react-router-dom'
 
 const Navbar = (props) =>{
+  const {user, handleLogin } = useContext(AuthContext)
   
 
-  const rightNavItems = (user, handleLogout) =>{
+  const rightNavItems = ({user, handleLogout}) =>{
+    debugger
     if(user){
       return(
         <Menu.Menu position = 'right'>
@@ -36,17 +38,21 @@ const Navbar = (props) =>{
     }
   }
   
-  const {auth,} = useContext(AuthContext)
   return(
+    <AuthConsumer>
+      { auth => 
       <Menu pointing secondary>
         <Link to ='/'>
           <Menu.Item
-          name="Home"
-          active={props.location.pathname ==='/'}
+          name= "Home"
+          active={props.location.pathname === '/'}
           />
         </Link>
-        {rightNavItems(auth)}
+        { rightNavItems(auth) }
       </Menu>
+        }
+
+    </AuthConsumer>
       
   )
   
