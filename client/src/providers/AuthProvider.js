@@ -7,9 +7,7 @@ export const AuthConsumer = AuthContext.Consumer
 
 
 export const AuthProvider = (props) =>{
-  // const user = { user: null
-    
-  // }
+ 
   const [user, setUser] = useState(null)
 
   const handleLogin = (user, history)=>{
