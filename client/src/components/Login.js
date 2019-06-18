@@ -8,6 +8,7 @@ const Login = (props) =>{
     password: "", 
   }
   const [form, setForm] = useState(emptyForm)
+  // const [email, setEmail] = useState("")
   const {handleLogin,} = useContext(AuthContext)
 
   
@@ -35,6 +36,7 @@ const Login = (props) =>{
           value={form.email}
           placeholder='Email'
           onChange={handleChange('email')}
+          // onChange={e=> setEmail(e.target.value)}
         />
         <Form.Input
           label="Password"

@@ -2,20 +2,25 @@ import React from 'react';
 import { AuthConsumer, } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header, } from 'semantic-ui-react';
 
-const Login = (props) =>{
+const Register = (props) =>{
   const emptyForm ={
     email: "",
     password: "", 
-    passwordconfirmation:"",
+    passwordConfirmation:"",
   }
   const [form, setForm] = useState(emptyForm)
-  const {handleLogin,} = useContext(AuthContext)
+  const {handleRegister,} = useContext(AuthContext)
 
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleLogin({...form}, props.history)
+    handleRegister({...form}, props.history)
+    if(form.password === form.passwordConfirmation){
+      handleRegister({...form,}, props.history)
+    }
+    else alert('Passwords Do Not Match!')
   }
+
 
   const handleChange = (name) => (e) => {
     // const { value, } = e.target;
@@ -26,7 +31,7 @@ const Login = (props) =>{
 
   return(
     <Segment basic>
-      <Header as='h1' textAlign='center'>Login</Header>
+      <Header as='h1' textAlign='center'>Register</Header>
       <Form onSubmit={handleSubmit}>
         <Form.Input
           label="Email"
@@ -54,4 +59,4 @@ const Login = (props) =>{
   )
 
 }
-export default Login
+export default Register
