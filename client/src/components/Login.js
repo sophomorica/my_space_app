@@ -20,7 +20,6 @@ const Login = (props) =>{
   const handleChange = (name) => (e) => {
     // const { value, } = e.target;
     setForm({...form, [name]: e.target.value})
-    
   }
   // const handleChange = (e, {name, value}) =>this.setState({[name]:value})
 

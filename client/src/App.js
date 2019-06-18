@@ -6,7 +6,7 @@ import Home from './static/Home'
 import About from './static/About'
 import NoMatch from './static/NoMatch'
 import Login from './components/Login'
-// import Register from './static/Register'
+import Register from './components/Register'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route exact path = '/' component = {Home}/>
         <Route exact path = '/about' component = {About}/>
         <Route exact path = '/login' component = {Login}/>
-        {/* <Route exact path = '/register' component = {Register}/> */}
+        <Route exact path = '/register' component = {Register}/>
         <Route component = {NoMatch}/>
       </Switch>
     </Container>

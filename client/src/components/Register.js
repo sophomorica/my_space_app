@@ -1,5 +1,5 @@
-import React from 'react';
-import { AuthConsumer, } from "../providers/AuthProvider";
+import React, {useState, useContext}from 'react';
+import { AuthContext, } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header, } from 'semantic-ui-react';
 
 const Register = (props) =>{
@@ -14,9 +14,11 @@ const Register = (props) =>{
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleRegister({...form}, props.history)
-    if(form.password === form.passwordConfirmation){
-      handleRegister({...form,}, props.history)
+    const email = form.email
+    const password = form.password
+    const passwordConfirmation = form.passwordConfirmation
+    if(password === passwordConfirmation){
+      handleRegister({email, password, passwordConfirmation}, props.history)
     }
     else alert('Passwords Do Not Match!')
   }
@@ -25,7 +27,6 @@ const Register = (props) =>{
   const handleChange = (name) => (e) => {
     // const { value, } = e.target;
     setForm({...form, [name]: e.target.value})
-    
   }
   // const handleChange = (e, {name, value}) =>this.setState({[name]:value})
 
@@ -51,6 +52,15 @@ const Register = (props) =>{
           type='password'
           onChange={handleChange('password')}
         />
+         <Form.Input
+            label="Password Confirmation"
+            required
+            name='passwordConfirmation'
+            value={form.passwordConfirmation}
+            placeholder='Password Confirmation'
+            type='password'
+            onChange={handleChange('passwordConfirmation')}
+          />
         <Segment textAlign='center' basic>
           <Button primary type='submit'>Submit</Button>
         </Segment>

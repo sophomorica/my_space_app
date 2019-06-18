@@ -21,6 +21,7 @@ export const AuthProvider = (props) =>{
     })
   }
   const handleRegister = (user, history) =>{
+    debugger
     axios.post("/api/auth",user)
     .then(res=>{
       setUser(res.data.data)
