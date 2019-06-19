@@ -2,12 +2,22 @@ class Api::ProfilesController < ApplicationController
   before_action :authenticate_user!
   
   def index
+    # can view all profiles except the ones you liked index 
     render json: User.random_profile(current_user.liked_profiles)
   end
+
+  def show
+    Account.find_by(user_id)
+  end
+
 
   def update
     current_user.liked_profiles << params[:id].to_i
     current_user.save
+  end
+
+  def update_profile
+    
   end
   
   def my_profiles
