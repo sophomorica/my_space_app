@@ -43,13 +43,13 @@ const Home = () =>{
             <Card.Content>
               {user.user ? <Button onClick={()=> addProfile(p.id)}color='green' icon basic>
             
-            <Icon name='thumbs up'/>
-          </Button> : 
-          <Link to ='/login'>
+                <Icon name='thumbs up'/>
+                </Button> : 
+                <Link to ='/login'>
 
-          <Button>Log in to add</Button>
-          </Link>
-        }
+                <Button>Log in to add</Button>
+                </Link>
+                }
             
             </Card.Content>
           </Card>

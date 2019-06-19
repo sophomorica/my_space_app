@@ -1,7 +1,7 @@
 30.times do
   name = Faker::Movies::HarryPotter.character
   nickname = Faker::Games::Pokemon.move
-  image = Faker::Avatar.image(name, "50x200", "png", "set2")
+  image = Faker::Avatar.image(name, "200x200", "png", "set5")
   email = Faker::Internet.email
   password = "password"
   u = User.create(name: name, email: email, nickname: nickname, password: password, password_confirmation: password)
