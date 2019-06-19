@@ -6,8 +6,10 @@ class Api::ProfilesController < ApplicationController
     # if current_user
     # render json: User.random_profile(current_user.liked_profiles)
     # else
-      render json: Profile.all
+      profiles = Profile.all
+      render json: profiles.random_profile(profiles)
     # end
+
   end
 
   def show
