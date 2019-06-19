@@ -29,3 +29,5 @@ class MyProfiles extends React.Component{
     )
   }
 }
+
+export default MyProfiles

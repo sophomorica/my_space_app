@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import {Header} from 'semantic-ui-react'
+import {Header, Card, Image, Divider, Icon, Button} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 import axios from 'axios';
 
 const Home = () =>{
@@ -21,7 +22,7 @@ const Home = () =>{
     <div>
     <Header as='h1' textAlign="center">My Space</Header>
     <Card.Group itemsPerRow={4}>
-        {this.state.profiles.map(p=>
+        {profiles.map(p=>
           <Card key = {p.id}>
             <Image src = {p.avatar}/>
             <Card.Content>
@@ -30,9 +31,19 @@ const Home = () =>{
                 {p.name}
               </Card.Header>
             </Card.Content>
+            <Card.Content>
+            <Button onClick={()=> addProfile(p.id)}color='green' icon basic>
+            <Icon name='thumbs up'/>
+          </Button>
+            </Card.Content>
           </Card>
           )}
       </Card.Group>
+      <Link to ='/my-profiles'>
+      <Button color='blue'>
+        My Liked Profiles
+      </Button>
+      </Link>
   </div>
     )
 
