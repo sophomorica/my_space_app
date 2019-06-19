@@ -13,7 +13,7 @@ class Api::ProfilesController < ApplicationController
   end
 
   def show
-    Account.find_by(user_id)
+    render json: @profile
   end
 
 
@@ -28,5 +28,9 @@ class Api::ProfilesController < ApplicationController
   
   def my_profiles
     render json: User.liked(current_user.liked_profiles)
+  end
+  private
+  def set_profile
+    @profile = Profile.find(params[:id])
   end
 end

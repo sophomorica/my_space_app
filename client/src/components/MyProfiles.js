@@ -31,7 +31,7 @@ const MyProfiles = (props) =>{
             <Button onClick={()=> downVote(p.id)} color='red' icon basic>
             <Icon name='thumbs down'/>
           </Button>
-          <Link to={'/profiles'} >
+          <Link to={`profiles/${p.id}`}>
           <Button>View Profile</Button>
           </Link>
             </Card.Content>
