@@ -22,6 +22,8 @@ class MyProfiles extends React.Component{
               <Card.Header>
                 {p.name}
               </Card.Header>
+              <Card.Description>{p.about}</Card.Description>
+              <Card.Meta>{p.email}</Card.Meta>
             </Card.Content>
           </Card>
           )}

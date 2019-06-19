@@ -19,7 +19,7 @@ function App() {
 
     <Container>
       <Switch>
-        <ProtectedRoute exact path = '/' component = {Home}/>
+        <Route exact path = '/' component = {Home}/>
         <ProtectedRoute exact path = '/my-profiles' component = {MyProfiles}/>
         <Route exact path = '/about' component = {About}/>
         <Route exact path = '/login' component = {Login}/>

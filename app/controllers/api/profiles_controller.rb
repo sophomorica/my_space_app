@@ -1,9 +1,13 @@
 class Api::ProfilesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   
   def index
     # can view all profiles except the ones you liked index 
-    render json: User.random_profile(current_user.liked_profiles)
+    # if current_user
+    # render json: User.random_profile(current_user.liked_profiles)
+    # else
+      render json: Profile.all
+    # end
   end
 
   def show
