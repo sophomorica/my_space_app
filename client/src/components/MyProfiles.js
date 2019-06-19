@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Divider, Card, Image, Button, Icon } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 const MyProfiles = (props) =>{
   const [profiles, setProfiles] = useState([])
@@ -8,6 +9,7 @@ const MyProfiles = (props) =>{
   useEffect(()=>{
     axios.get('/api/my_profiles')
     .then(res => setProfiles(res.data))
+    axios.get(`/api/profiles`)
   }, [])
   const downVote = (id) =>{
     setProfiles(profiles.filter(p => p.id !== id))
@@ -29,6 +31,9 @@ const MyProfiles = (props) =>{
             <Button onClick={()=> downVote(p.id)} color='red' icon basic>
             <Icon name='thumbs down'/>
           </Button>
+          <Link to={'/profiles'} >
+          <Button>View Profile</Button>
+          </Link>
             </Card.Content>
           </Card>
           )}
