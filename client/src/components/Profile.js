@@ -16,30 +16,9 @@ const Profile =(props)=>{
        
       })
   },[])
-  // componentDidMount() {
-  //   const { id } = this.props.match.params
-  //   axios.get(`/api/departments/${id}`)
-  //     .then(res => {
-  //       this.setState({ department: res.data, });
-  //     })
+ 
 
-  //   axios.get(`/api/departments/${id}/items`)
-  //     .then(res => {
-  //       this.setState({ items: res.data })
-  //     })
-  //     .catch(err => {
-  //       console.log(err.response)
-  //     })
-  // }
-
-  const renderFriend = (id) =>{
-    id = props.match.params.id
-    profile.filter(p => {
-      if(p.id === id){
-      }
-    })
-
-  }
+ 
 
   return(
     <>

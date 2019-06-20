@@ -1,49 +1,36 @@
-import React from 'react'
-import axios from 'axios'
-import {AuthConsumer, } from "../providers/AuthProvider"
+import  {useEffect, useState,  useContext} from 'react'
+import axios from 'axios';
+import {  AuthContext } from "../providers/AuthProvider";
 
-class FetchUser extends React.Component{
-  state = { loaded: false, }
+const FetchUser = ({children})=>{
+const [loaded, setLoaded] = useState(false)
+const {authenticated, setUser} = useContext(AuthContext)
 
-  componentDidMount(){
-    const {auth: {authenticated, setUser, }} = this.props;
-    if(authenticated){
-      this.loaded()
-    } else {
-      if(this.checkLocalToken()){
-        axios.get('/api/auth/validate_token')
-          .then(res =>{
-            setUser(res.data.data)
-            this.loaded()
+useEffect(()=>{
+      if (authenticated){
+        setLoaded(true)
+      } else {
+        if (checkLocalToken()){
+          axios.get('/api/auth/validate_token')
+          .then(res => {
+            setUser(res.data.data);
+            setLoaded(true);
           })
-          .catch(err=>{
-            this.loaded();
+          .catch(res => {
+            setLoaded(true);
           })
-      } else{
-        this.loaded()
+        } else{
+          setLoaded(true);
+        }
       }
-    }
-  }
-  
-  checkLocalToken = () =>{
-    const token = localStorage.getItem("access-token")
-    return token
+    },[])
+
+  const checkLocalToken = () => {
+    const token = localStorage.getItem('access-token');
+    return token;
   }
 
-  loaded = () => this.setState({ loaded: true, })
 
-  render(){
-    return this.state.loaded ? this.props.children : null
-  }
-  
+   return  loaded ? children : null;
 }
-
-const ConnectedFetchUser = (props) =>(
-  <AuthConsumer>
-    {auth =>
-    <FetchUser {...props} auth={auth}/>
-    }
-  </AuthConsumer>
-)
-
-export default ConnectedFetchUser
+export default FetchUser;

@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import {Container} from 'semantic-ui-react'
 import Navbar from './static/Navbar'
-import Home from './static/Home'
+import {Home} from './static/Home'
 import About from './static/About'
 import NoMatch from './static/NoMatch'
 import Login from './components/Login'
@@ -11,8 +11,11 @@ import FetchUser from './components/FetchUser'
 import ProtectedRoute from './components/ProtectedRoute'
 import MyProfiles from './components/MyProfiles'
 import Profile from './components/Profile'
+import { initMiddleware} from "devise-axios"
+
 
 function App() {
+  initMiddleware()
   return (
     <>
     <Navbar/>
