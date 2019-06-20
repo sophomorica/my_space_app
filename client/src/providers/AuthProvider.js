@@ -21,7 +21,6 @@ export const AuthProvider = (props) =>{
     })
   }
   const handleRegister = (user, history) =>{
-    debugger
     axios.post("/api/auth",user)
     .then(res=>{
       setUser(res.data.data)
@@ -33,7 +32,6 @@ export const AuthProvider = (props) =>{
   }
 
   const handleLogout = (history) =>{
-    debugger
     axios.delete("/api/auth/sign_out")
     .then(res=>{
       debugger

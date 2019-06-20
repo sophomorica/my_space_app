@@ -4,7 +4,6 @@ import {AuthConsumer } from "../providers/AuthProvider"
 import {Link, withRouter, } from 'react-router-dom'
 
 const Navbar = (props) => {
-
   const rightNavItems = ({user, handleLogout}) => {
     if(user){
       return(

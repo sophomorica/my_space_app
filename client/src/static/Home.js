@@ -8,7 +8,6 @@ const Home = () =>{
 
   const [profiles, setProfiles] = useState([])
   const user = useContext(AuthContext)
-  console.log(user.user)
 
   useEffect(()=>{
     axios.get('/api/profiles')
