@@ -1,5 +1,6 @@
 class Api::ProfilesController < ApplicationController
   # before_action :authenticate_user!
+  before_action :set_profile, only: [:show]
   
   def index
     # can view all profiles except the ones you liked index 

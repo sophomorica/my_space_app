@@ -17,18 +17,17 @@ function App() {
     <>
     <Navbar/>
     <FetchUser>
-
-    <Container>
-      <Switch>
-        <Route exact path = '/' component = {Home}/>
-        <ProtectedRoute exact path = '/my-profiles' component = {MyProfiles}/>
-        <Route exact path = '/profiles/:id' component = {Profile}/>
-        <Route exact path = '/about' component = {About}/>
-        <Route exact path = '/login' component = {Login}/>
-        <Route exact path = '/register' component = {Register}/>
-        <Route component = {NoMatch}/>
-      </Switch>
-    </Container>
+      <Container>
+        <Switch>
+          <Route exact path = '/' component = {Home}/>
+          <ProtectedRoute exact path = '/my-profiles' component = {MyProfiles}/>
+          <Route exact path = '/profiles/:id' component = {Profile}/>
+          <Route exact path = '/about' component = {About}/>
+          <Route exact path = '/login' component = {Login}/>
+          <Route exact path = '/register' component = {Register}/>
+          <Route component = {NoMatch}/>
+        </Switch>
+      </Container>
     </FetchUser>
     </>
     
