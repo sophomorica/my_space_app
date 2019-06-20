@@ -1,8 +1,6 @@
-import React, {useEffect, useState, useContext} from 'react'
+import React, {useEffect, useState, } from 'react'
 import axios from 'axios'
-import {Divider, Card, Image, Button, Icon } from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
-import MyProfiles from './MyProfiles';
+import {Divider, Card, Image, } from 'semantic-ui-react'
 
 const Profile =(props)=>{
   const [profile, setProfile] = useState({})
@@ -11,9 +9,7 @@ const Profile =(props)=>{
     const {id } =props.match.params
     axios.get(`/api/profiles/${id}`)
     .then(res=>{
-      debugger
         setProfile(res.data)
-       
       })
   },[])
  
@@ -22,11 +18,20 @@ const Profile =(props)=>{
 
   return(
     <>
-          <Card>
-        <Card.Header>
-          {profile.name}
-        </Card.Header>
-      </Card>
+          <Card key = {profile.id}>
+            <Image src = {profile.avatar}/>
+            <Card.Content>
+              <Divider/>
+              <Card.Header>
+                {profile.name}
+              </Card.Header>
+              <Card.Description>{profile.about}</Card.Description>
+              <Card.Meta>{profile.email}</Card.Meta>
+            </Card.Content>
+            <Card.Content>
+        
+            </Card.Content>
+          </Card>
     </>
   )
 }

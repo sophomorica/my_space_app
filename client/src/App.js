@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import {Container} from 'semantic-ui-react'
 import Navbar from './static/Navbar'
-import {Home} from './static/Home'
+import Home from './static/Home'
 import About from './static/About'
 import NoMatch from './static/NoMatch'
 import Login from './components/Login'
