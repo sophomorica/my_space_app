@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get "my_profiles", to: "profiles#my_profiles"
     put "disliked/:id", to: "profiles#disliked"
 
-    resources :items do
+    resources :profiles do
       resources :posts
     end
   end
