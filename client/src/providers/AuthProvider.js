@@ -50,7 +50,7 @@ export const AuthProvider = (props) =>{
       handleLogin: handleLogin,
       handleRegister: handleRegister,
       handleLogout: handleLogout,
-
+      setUser: (user) => setUser(user)
     }}>
       {props.children}
     </AuthContext.Provider>
