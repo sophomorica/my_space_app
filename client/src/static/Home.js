@@ -45,7 +45,7 @@ const Home = (props) =>{
                   <Link to ='/login'><Button>Log in to add</Button>
                   </Link>
                 }
-              <Link to={`profiles/${p.id}`}{...props}>
+              <Link to={`profiles/${p.id}`}key ={p.id} {...props}>
                   <Button color="blue inverted">View Profile</Button>
               </Link>
             </Card.Content>

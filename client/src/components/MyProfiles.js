@@ -34,7 +34,7 @@ const MyProfiles = (props) =>{
                 unfriend 
               <Icon name='thumbs down'/>
               </Button>
-              <Link to={`profiles/${p.id}`}{...props}>
+              <Link to={`profiles/${p.id}`}{...props} key={p.id}>
               <Button>View Profile</Button>
               </Link>
             </Card.Content>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState, } from 'react'
 import axios from 'axios'
 import {Divider, Card, Image, Icon, Button } from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import PostForm from './PostForm'
 
 const Profile =(props)=>{
@@ -21,9 +21,8 @@ const Profile =(props)=>{
   },[])
 
   const renderPosts = () =>{
-    const {id } = props.match.params
     return posts.map(p => (
-      <Card.Content>
+      <Card.Content key={p.id}>
         <Card.Description>
           {p.body}
         </Card.Description>
