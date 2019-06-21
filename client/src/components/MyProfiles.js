@@ -9,10 +9,12 @@ const MyProfiles = (props) =>{
   useEffect(()=>{
     axios.get('/api/my_profiles')
     .then(res => setMyProfiles(res.data))
-    axios.get(`/api/profiles`)
   }, [])
-  const downVote = (id) =>{
-    setMyProfiles(myProfiles.filter(p => p.id !== id))
+  const disliked = (id) =>{
+    axios.put(`/api/disliked/${id}`)
+    .then(res => {
+      setMyProfiles(myProfiles.filter(p => p.id !== id))
+    })
   }
   return(
     <Card.Group itemsPerRow={4}>
@@ -28,7 +30,7 @@ const MyProfiles = (props) =>{
               <Card.Meta>{p.email}</Card.Meta>
             </Card.Content>
             <Card.Content>
-            <Button onClick={()=> downVote(p.id)} color='red' icon basic>
+            <Button onClick={()=> disliked(p.id)} color='red' icon basic>
             <Icon name='thumbs down'/>
           </Button>
           <Link to={`profiles/${p.id}`}{...props}>

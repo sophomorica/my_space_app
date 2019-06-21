@@ -7,8 +7,9 @@ class Api::ProfilesController < ApplicationController
     # if current_user
     # render json: User.random_profile(current_user.liked_profiles)
     # else
-      profiles = Profile.all
-      render json: profiles.random_profile(profiles)
+      # profiles = Profile.all
+      # render json: profiles
+      render json: User.random_profile(current_user.liked_profiles)
     # end
 
   end
@@ -23,8 +24,9 @@ class Api::ProfilesController < ApplicationController
     current_user.save
   end
 
-  def update_profile
-    
+  def disliked
+    current_user.liked_profiles.delete(params[:id].to_i)
+    current_user.save
   end
   
   def my_profiles

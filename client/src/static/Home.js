@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios';
 import { AuthContext } from '../providers/AuthProvider';
 
-const Home = () =>{
+const Home = (props) =>{
 
   const [profiles, setProfiles] = useState([])
   const user = useContext(AuthContext)
@@ -39,17 +39,15 @@ const Home = () =>{
                 {p.name}
               </Card.Header>
             </Card.Content>
-            <Card.Content>
-              {user.user ? <Button onClick={()=> addProfile(p.id)}color='green' icon basic>
-            
-                <Icon name='thumbs up'/>
-                </Button> : 
-                <Link to ='/login'>
-
-                <Button>Log in to add</Button>
-                </Link>
+            <Card.Content style={{display:"flex"}}>
+              {user.user ? 
+                    <Button onClick={()=> addProfile(p.id)}color='green' icon basic><Icon name='thumbs up'/></Button> : 
+                  <Link to ='/login'><Button>Log in to add</Button>
+                  </Link>
                 }
-            
+              <Link to={`profiles/${p.id}`}{...props}>
+                  <Button color="blue inverted">View Profile</Button>
+              </Link>
             </Card.Content>
           </Card>
           )}

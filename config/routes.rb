@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do 
     resources :profiles
     get "my_profiles", to: "profiles#my_profiles"
+    put "disliked/:id", to: "profiles#disliked"
   end
   
 end
