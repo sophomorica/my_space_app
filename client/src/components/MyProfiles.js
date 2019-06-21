@@ -29,13 +29,14 @@ const MyProfiles = (props) =>{
               <Card.Description>{p.about}</Card.Description>
               <Card.Meta>{p.email}</Card.Meta>
             </Card.Content>
-            <Card.Content>
-            <Button onClick={()=> disliked(p.id)} color='red' icon basic>
-            <Icon name='thumbs down'/>
-          </Button>
-          <Link to={`profiles/${p.id}`}{...props}>
-          <Button>View Profile</Button>
-          </Link>
+            <Card.Content style={{display:"flex", justifyContent:"space-between"}}>
+              <Button onClick={()=> disliked(p.id)} color='red' icon basic>
+                unfriend 
+              <Icon name='thumbs down'/>
+              </Button>
+              <Link to={`profiles/${p.id}`}{...props}>
+              <Button>View Profile</Button>
+              </Link>
             </Card.Content>
           </Card>
           )}
