@@ -2,10 +2,13 @@ import React, {useEffect, useState, } from 'react'
 import axios from 'axios'
 import {Divider, Card, Image, Icon, Button } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+import PostForm from './PostForm'
 
 const Profile =(props)=>{
   const [profile, setProfile] = useState({})
   const [posts, setPosts] = useState([])
+  const [showForm, setShowForm] = useState(false)
+
   
   useEffect(()=>{
     const {id } = props.match.params
@@ -26,9 +29,8 @@ const Profile =(props)=>{
         </Card.Description>
         <Card.Meta>
           <Button icon basic color='blue'><Icon name = 'thumbs up'/></Button>
-          <Link to ={`/profiles/${id}/posts/${p.id}`}>
-            <Button icon basic color='blue'><Icon name = 'pencil'/></Button>
-          </Link>
+
+           
         </Card.Meta>
       </Card.Content>
     ))
@@ -49,6 +51,9 @@ const Profile =(props)=>{
               <Card.Description>{profile.about}</Card.Description>
               <Card.Meta>{profile.email}</Card.Meta>
             </Card.Content>
+            <Button  onClick={()=>setShowForm(!showForm)} icon basic color='blue'>{showForm ? "Close Post" : "Add Post"}</Button>
+            <br/>
+            {showForm && <PostForm {...props}toggleForm={setShowForm} add={(post) =>setPosts([...posts, post])}/>}
             {renderPosts()}
             
           </Card>

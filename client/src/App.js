@@ -11,6 +11,7 @@ import FetchUser from './components/FetchUser'
 import ProtectedRoute from './components/ProtectedRoute'
 import MyProfiles from './components/MyProfiles'
 import Profile from './components/Profile'
+import PostForm from './components/PostForm'
 import { initMiddleware} from "devise-axios"
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route exact path = '/' component = {Home}/>
           <ProtectedRoute exact path = '/my-profiles' component = {MyProfiles}/>
           <Route exact path = '/profiles/:id' component = {Profile}/>
+          <Route exact path = '/profiles/profile_id/posts/:id' component = {PostForm}/>
           <Route exact path = '/about' component = {About}/>
           <Route exact path = '/login' component = {Login}/>
           <Route exact path = '/register' component = {Register}/>
